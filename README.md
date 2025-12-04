@@ -1,69 +1,66 @@
 ✅ Task 1 — Data Collection & Preprocessing
 1. Scraping Google Play Reviews
 
-Using google-play-scraper, the project extracts 500+ reviews per bank.
+ - Using google-play-scraper, the project extracts 500+ reviews per bank.
 
-Script:
+ - Script:
 
-src/scraper.py
+ - src/scraper.py
 
 
 Output files:
 
-data/raw/reviews_raw.csv — combined raw reviews
+  - data/raw/reviews_raw.csv — combined raw reviews
 
-data/raw/app_info.csv — app metadata (title, ratings, installs, etc.)
+  - data/raw/app_info.csv — app metadata (title, ratings, installs, etc.)
 
 2. Preprocessing Steps
 
-Script:
+ src/preprocessing.py
+ 
+ - Operations performed:
 
-src/preprocessing.py
+ - Remove duplicate reviews
 
+ - Remove Amharic/Ethiopic script (keep only English text)
 
-Operations performed:
+ - Drop rows missing essential fields (review_text, rating, bank_name)
 
-Remove duplicate reviews
+ - Normalize dates → YYYY-MM-DD
 
-Remove Amharic/Ethiopic script (keep only English text)
+ - Clean whitespace and text noise
 
-Drop rows missing essential fields (review_text, rating, bank_name)
+ - Compute text length
 
-Normalize dates → YYYY-MM-DD
-
-Clean whitespace and text noise
-
-Compute text length
-
-Validate rating values
+-  Validate rating values
 
 Output:
 
-data/processed/reviews_processed.csv (clean dataset for analysis)
+ - data/processed/reviews_processed.csv (clean dataset for analysis)
 
 3. Exploratory Data Analysis (EDA)
 
-Notebook:
+ Notebook:
 
-notebooks/preprocessing_eda.ipynb
+ - notebooks/preprocessing_eda.ipynb
 
 
 Visualizations include:
 
-Rating distribution
+    Rating distribution
 
-Number of reviews per bank
+    Number of reviews per bank
 
-Review text-length distribution
+    Review text-length distribution
 
 ✅ Task 2 — Sentiment & Thematic Analysis
 1. Sentiment Analysis (VADER)
 
-Using VADER:
+  Using VADER:
 
-Calculates sentiment_score (−1 → +1)
+  Calculates sentiment_score (−1 → +1)
 
-Assigns sentiment_label: positive, neutral, negative
+  Assigns sentiment_label: positive, neutral, negative
 
 Output:
 
@@ -76,9 +73,9 @@ notebooks/sentiment_analysis.ipynb
 
 Visualizations:
 
-Sentiment distribution per bank (violin/box plots)
+ Sentiment distribution per bank (violin/box plots)
 
-Positive/Negative proportions
+ Positive/Negative proportions
 
 2. Theme Extraction
 
@@ -91,55 +88,44 @@ Approach uses:
 
 Output files:
 
-data/themes/tfidf_keywords.csv
+    data/themes/tfidf_keywords.csv
 
-data/themes/lda_topics.csv
+    data/themes/lda_topics.csv
 
-data/themes/themes_by_bank.csv
+    data/themes/themes_by_bank.csv
 
-Notebook:
+    Notebook:
 
 notebooks/theme_extraction.ipynb
 
 
 Themes identified include examples like:
 
-UX & Interface Issues
+    UX & Interface Issues
 
-Transaction & Payment Problems
+    Transaction & Payment Problems
 
-Performance & Reliability
+    Performance & Reliability
 
-Customer Support
+    Customer Support
 
-Account Access Issues
+    Account Access Issues
 
 
 🚀 How to Run
 1. Install dependencies
-pip install -r requirements.txt
-
-2. Add .env file (example)
-CBE_APP_ID=com.combanketh.mobilebanking
-BOA_APP_ID=com.boa.boaMobileBanking
-DASHEN_APP_ID=com.dashen.dashensuperapp
-REVIEWS_PER_BANK=500
-MAX_RETRIES=3
+   pip install -r requirements.txt
 
 3. Scrape reviews
-python src/scraper.py
+   python src/scraper.py
 
 4. Preprocess reviews
-python src/preprocessing.py
+    python src/preprocessing.py
 
 5. Run notebooks
 
-Start Jupyter:
+  Start Jupyter:
 
-jupyter notebook
-
-
-Then open the notebooks under notebooks/.
 
 ⭐ Key Achievements
 
@@ -156,59 +142,59 @@ This task focuses on storing the cleaned and processed app review data into a Po
 
 📌 Objectives
 
-Install and configure PostgreSQL locally
+    Install and configure PostgreSQL locally
+ 
+    Create a relational schema for banks and reviews
 
-Create a relational schema for banks and reviews
+    Insert processed dataset (1,463 reviews) into the database
 
-Insert processed dataset (1,463 reviews) into the database
+    Run basic SQL queries to validate data
+ 
+    Connect to PostgreSQL using SQLAlchemy
 
-Run basic SQL queries to validate data
-
-Connect to PostgreSQL using SQLAlchemy
-
-Explore the stored data in a Jupyter Notebook
+    Explore the stored data in a Jupyter Notebook
 
 
 🛠 Steps Performed
 1️⃣ Install PostgreSQL
 
-Installed PostgreSQL 18 and set up:
+    Installed PostgreSQL 18 and set up:
 
-Default superuser: postgres
+    Default superuser: postgres
 
-New application user: review_user
+    New application user: review_user
 
-Database: bank_reviews
+    Database: bank_reviews
 
-Added PostgreSQL /bin folder to PATH so psql works in terminal.
+    Added PostgreSQL /bin folder to PATH so psql works in terminal.
 
 2️⃣ Create Database Schema
 
-Executed the schema using:
+    Executed the schema using:
 
-psql -U postgres -d bank_reviews -f src/schema.sql
+     psql -U postgres -d bank_reviews -f src/schema.sql
 
 
 Created two tables:
 
-banks
+    banks
 
-reviews
+    reviews
 
 3️⃣ Insert Cleaned Data
 
-Inserted 1,463 cleaned and sentiment-scored reviews:
+     Inserted 1,463 cleaned and sentiment-scored reviews:
 
-python src/insert_reviews.py
+    python src/insert_reviews.py
 
 
 Automatically:
 
- - Inserted unique banks
+    - Inserted unique banks
 
-  - Linked reviews → banks via foreign key
+    - Linked reviews → banks via foreign key
 
-   - Stored sentiment labels & sentiment scores
+    - Stored sentiment labels & sentiment scores
 
 4️⃣ Run Verification Queries
 
@@ -218,7 +204,7 @@ Automatically:
 
 5️⃣ Explore in Notebook
 
-Notebook: notebooks/db_setup.ipynb
+ Notebook: notebooks/db_setup.ipynb
 
 Includes:
 ✔ Connect to DB
@@ -231,18 +217,18 @@ Includes:
 
 ✅ Task 4 — Insights & Recommendations
 
-Goal: Identify drivers, pain points, and improvement opportunities.
+ Goal: Identify drivers, pain points, and improvement opportunities.
 What was done:
 
-Visualized sentiment trends, rating distributions, keyword clouds
+    Visualized sentiment trends, rating distributions, keyword clouds
 
-Identified key findings per bank
+    Identified key findings per bank
 
-Extracted top negative examples for evidence
+    Extracted top negative examples for evidence
 
-Generated actionable recommendations per bank
+    Generated actionable recommendations per bank
 
-Saved visuals to outputs/figures/ and tables to outputs/tables/
+    Saved visuals to outputs/figures/ and tables to outputs/tables/
   
 
   📂 Customer-Experience-Analytics-for-Fintech-Apps
@@ -267,3 +253,4 @@ Saved visuals to outputs/figures/ and tables to outputs/tables/
 ├── ⚙️ .env
 ├── 📄 requirements.txt
 └── 📘 README.md
+
