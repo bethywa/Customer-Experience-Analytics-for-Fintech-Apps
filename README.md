@@ -114,36 +114,6 @@ Customer Support
 
 Account Access Issues
 
-📁 Project Structure
-Customer-Experience-Analytics-for-Fintech-Apps/
-│
-├── src/
-│   ├── scraper.py
-│   ├── preprocessing.py
-│   ├── sentiment.py (optional)
-│   └── theme_extraction.py (optional)
-│
-├── data/
-│   ├── raw/
-│   │   ├── reviews_raw.csv
-│   │   └── app_info.csv
-│   ├── processed/
-│   │   └── reviews_processed.csv
-│   ├── sentiment/
-│   │   └── sentiment_results.csv
-│   └── themes/
-│       ├── tfidf_keywords.csv
-│       ├── lda_topics.csv
-│       └── themes_by_bank.csv
-│
-├── notebooks/
-│   ├── preprocessing_eda.ipynb
-│   ├── sentiment_analysis.ipynb
-│   └── theme_extraction.ipynb
-│
-├── requirements.txt
-├── .env                  (NOT uploaded / in .gitignore)
-└── README.md
 
 🚀 How to Run
 1. Install dependencies
@@ -198,19 +168,6 @@ Connect to PostgreSQL using SQLAlchemy
 
 Explore the stored data in a Jupyter Notebook
 
-📂 Folder Structure
-Customer-Experience-Analytics-for-Fintech-Apps/
-├─ src/
-│  ├─ config.py                # Loads DB credentials
-│  ├─ db.py                    # SQLAlchemy engine
-│  ├─ schema.sql               # CREATE TABLES script
-│  ├─ insert_reviews.py        # Load CSV → PostgreSQL
-│  └─ verify_queries.py        # Test queries
-├─ notebooks/
-│  └─ db_setup.ipynb     # DB exploration + plots
-├─ data/
-│  └─ sentiment/sentiment_results.csv
-├─ .env
 
 🛠 Steps Performed
 1️⃣ Install PostgreSQL
@@ -272,14 +229,41 @@ Includes:
 ✔ Reviews over time
 ✔ Top negative reviews
 
-📊 Key Results
+✅ Task 4 — Insights & Recommendations
 
-  - 3 banks loaded
+Goal: Identify drivers, pain points, and improvement opportunities.
+What was done:
 
-  - 1,463 reviews stored
+Visualized sentiment trends, rating distributions, keyword clouds
 
-  - Fully working PostgreSQL connection
+Identified key findings per bank
 
-  - Sentiment and rating data accurately preserved
+Extracted top negative examples for evidence
 
-  - Verified analytics using SQL and Notebook visualizations
+Generated actionable recommendations per bank
+
+Saved visuals to outputs/figures/ and tables to outputs/tables/
+  
+
+  📂 Customer-Experience-Analytics-for-Fintech-Apps
+│
+├── 📁 data
+│   ├── 📁 raw
+│   ├── 📁 processed
+│   └── 📁 sentiment
+│
+├── 📁 outputs
+│   ├── 🖼️ figures
+│   └── 📊 tables
+│
+├── 📓 notebooks
+│
+├── 📁 reports
+│
+├── 📁 scripts
+│
+├── 📁 src
+│
+├── ⚙️ .env
+├── 📄 requirements.txt
+└── 📘 README.md

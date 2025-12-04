@@ -1,0 +1,22 @@
+Recommendations
+
+Commercial Bank of Ethiopia:
+- Investigate slow transfer flows on high-load endpoints (evidence: 'slow', 'loading' counts)
+- Improve onboarding UI elements; reduce clicks for frequent tasks
+
+Bank of Abyssinia:
+- Stabilize app to reduce crashes (evidence: many 'crash' mentions)
+- Optimize network handling for low-connectivity scenarios
+
+Dashen Bank:
+- Add in-app help and clearer error messages for failed transactions
+- Prioritize performance improvements for older devices
+
+
+Ethics:
+
+Ethical notes:
+- Reviews are self-selected (survivorship / negativity bias).
+- May be skewed to recent events or specific user segments (power users).
+- Language coverage: some reviews in Amharic were removed; this may bias results away from non-English voices.
+- Use anonymized examples & avoid exposing PII in reports.
