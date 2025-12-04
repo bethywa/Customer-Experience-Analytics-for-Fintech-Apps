@@ -178,3 +178,108 @@ Then open the notebooks under notebooks/.
 ✔ Sentiment scoring using VADER
 ✔ Theme extraction using TF-IDF + LDA topic modeling
 ✔ Professional EDA and NLP visualizations
+
+
+   🧩 Task 3 — PostgreSQL Database Integration
+
+This task focuses on storing the cleaned and processed app review data into a PostgreSQL relational database, simulating real-world data engineering workflows.
+
+📌 Objectives
+
+Install and configure PostgreSQL locally
+
+Create a relational schema for banks and reviews
+
+Insert processed dataset (1,463 reviews) into the database
+
+Run basic SQL queries to validate data
+
+Connect to PostgreSQL using SQLAlchemy
+
+Explore the stored data in a Jupyter Notebook
+
+📂 Folder Structure
+Customer-Experience-Analytics-for-Fintech-Apps/
+├─ src/
+│  ├─ config.py                # Loads DB credentials
+│  ├─ db.py                    # SQLAlchemy engine
+│  ├─ schema.sql               # CREATE TABLES script
+│  ├─ insert_reviews.py        # Load CSV → PostgreSQL
+│  └─ verify_queries.py        # Test queries
+├─ notebooks/
+│  └─ db_setup.ipynb     # DB exploration + plots
+├─ data/
+│  └─ sentiment/sentiment_results.csv
+├─ .env
+
+🛠 Steps Performed
+1️⃣ Install PostgreSQL
+
+Installed PostgreSQL 18 and set up:
+
+Default superuser: postgres
+
+New application user: review_user
+
+Database: bank_reviews
+
+Added PostgreSQL /bin folder to PATH so psql works in terminal.
+
+2️⃣ Create Database Schema
+
+Executed the schema using:
+
+psql -U postgres -d bank_reviews -f src/schema.sql
+
+
+Created two tables:
+
+banks
+
+reviews
+
+3️⃣ Insert Cleaned Data
+
+Inserted 1,463 cleaned and sentiment-scored reviews:
+
+python src/insert_reviews.py
+
+
+Automatically:
+
+ - Inserted unique banks
+
+  - Linked reviews → banks via foreign key
+
+   - Stored sentiment labels & sentiment scores
+
+4️⃣ Run Verification Queries
+
+     . python src/verify_queries.py
+
+
+
+5️⃣ Explore in Notebook
+
+Notebook: notebooks/db_setup.ipynb
+
+Includes:
+✔ Connect to DB
+✔ Load reviews into pandas
+✔ Visualize sentiment distribution
+✔ Ratings distribution
+✔ Reviews per bank
+✔ Reviews over time
+✔ Top negative reviews
+
+📊 Key Results
+
+  - 3 banks loaded
+
+  - 1,463 reviews stored
+
+  - Fully working PostgreSQL connection
+
+  - Sentiment and rating data accurately preserved
+
+  - Verified analytics using SQL and Notebook visualizations

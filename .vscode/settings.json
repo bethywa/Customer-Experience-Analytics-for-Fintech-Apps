@@ -1,4 +1,33 @@
 {
   "python.defaultInterpreterPath": ".venv/bin/python",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "xprotocol",
+        "enableSsl": "Disabled"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 33060,
+      "driver": "MySQL",
+      "name": "mysql local",
+      "database": "new_app",
+      "username": "root",
+      "password": "momyee.10",
+      "connectionTimeout": 30
+    },
+    {
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "PG local",
+      "database": "bank_reviews",
+      "username": "postgres",
+      "connectionTimeout": 30,
+      "password": "bethy1005"
+    }
+  ]
 }
